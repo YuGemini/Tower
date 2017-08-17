@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 配置命名空间，区别映射文件的名称 -->
+<mapper namespace="com.tower.mapper.LoginMapper">
+	<resultMap type="com.tower.entity.UserLogin" id="User">
+		<id property="id" column="id"/>
+		<result property="username" column="username"/>
+		<result property="password" column="password"/>
+	</resultMap>
+	
+	<!-- 带条件的查询 -->
+	<select id="getUser" parameterType="java.lang.String" resultMap="User">
+		select * from LoginUser
+		where 1=1
+		<if test="name!=null">and username = #{name}</if>
+	</select>
+	
+	<insert id="saveUser" parameterType="com.tower.entity.UserLogin">
+		insert into LoginUser (username, password, id)
+		values (#{username}, #{password}, #{id})
+	</insert>
+</mapper>

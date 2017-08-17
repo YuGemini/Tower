@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 配置命名空间，区别映射文件的名称 -->
+<mapper namespace="com.tower.mapper.StationMapper">
+	<resultMap type="com.tower.entity.StationInfo" id="StationInfo">
+		<result property="id" column="id" />
+		<result property="cntower" column="ct" />
+		<result property="cnmobile" column="cm" />
+		<result property="cntelecom" column="cd" />
+		<result property="cnunicom" column="cu" />
+	</resultMap>
+
+
+	<!-- 带条件的查询 -->
+	<select id="getStations" parameterType="map" resultMap="StationInfo">
+		select * from site
+		where 1=1
+		<if test="id!=null">and id like CONCAT(CONCAT('%', #{id}), '%')</if>
+		<if test="ct!=null">and (ct like CONCAT(CONCAT('%', #{ct}), '%')</if>
+		<if test="ct!=null">or cm like CONCAT(CONCAT('%', #{ct}), '%')</if>
+		<if test="ct!=null">or cd like CONCAT(CONCAT('%', #{ct}), '%')</if>
+		<if test="ct!=null">or cu like CONCAT(CONCAT('%', #{ct}), '%'))</if>
+		limit #{curRow},#{pageSize}
+	</select>
+
+	<select id="getTotalcount" resultType="java.lang.Integer"
+		parameterType="map">
+		select count(*) from site
+		where 1=1
+		<if test="id!=null">and id like CONCAT(CONCAT('%', #{id}), '%')</if>
+		<if test="ct!=null">and (ct like CONCAT(CONCAT('%', #{ct}), '%')</if>
+		<if test="ct!=null">or cm like CONCAT(CONCAT('%', #{ct}), '%')</if>
+		<if test="ct!=null">or cd like CONCAT(CONCAT('%', #{ct}), '%')</if>
+		<if test="ct!=null">or cu like CONCAT(CONCAT('%', #{ct}), '%'))</if>
+	</select>
+
+	<delete id="deleteStation" parameterType="java.lang.String">
+		delete from site where id = #{id}
+	</delete>
+
+	<insert id="insertStation" parameterType="com.tower.entity.StationInfo">
+		insert into site (id, ct,
+		cm, cd, cu)
+		values (#{id}, #{cntower}, #{cnmobile},
+		#{cntelecom}, #{cnunicom})
+	</insert>
+	<insert id="insertStations" parameterType="java.util.List">
+		<selectKey resultType="java.lang.Integer" keyProperty="id"
+			order="AFTER">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+		insert into site (id, ct, cm, cd, cu)
+		values
+		<foreach collection="list" item="stations" index="index"
+			separator=",">
+			(
+			#{stations.id},
+			#{stations.cntower},
+			#{stations.cnmobile},
+			#{stations.cntelecom},
+			#{stations.cnunicom}
+			)
+		</foreach>
+	</insert>
+	
+	<delete id="deleteAllStation">
+		delete from site
+	</delete>
+	
+</mapper>
