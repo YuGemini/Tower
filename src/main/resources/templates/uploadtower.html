@@ -1,6 +1,6 @@
 ﻿
 <!DOCTYPE html>
-<html>
+<html xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
 <head>
 	<title>China Tower Upload</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -42,7 +42,7 @@
             
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle hidden-xs hidden-sm" data-toggle="dropdown">
-                    你的账号
+                    <shiro:principal/>
                     <b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu">

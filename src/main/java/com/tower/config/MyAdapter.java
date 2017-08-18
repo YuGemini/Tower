@@ -12,12 +12,12 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
  */
 @Configuration
 public class MyAdapter extends WebMvcConfigurerAdapter {
-   /* @Override
+    @Override
     public void addViewControllers( ViewControllerRegistry registry ) {
-        registry.addViewController( "/" ).setViewName( "login" );
+        registry.addViewController( "/" ).setViewName( "index" );
         registry.setOrder( Ordered.HIGHEST_PRECEDENCE );
         super.addViewControllers( registry );
-    }*/
+    }
     
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {

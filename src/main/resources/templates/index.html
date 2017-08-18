@@ -1,6 +1,6 @@
 ﻿
 <!DOCTYPE html>
-<html>
+<html xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
 <head>
 	<title>China Tower Index</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -41,7 +41,7 @@
             
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle hidden-xs hidden-sm" data-toggle="dropdown">
-                    你的账号
+                    <shiro:principal/>
                     <b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu">
@@ -189,7 +189,7 @@
         <div>
    	<h1 style="margin-top:15px">&nbsp;&nbsp;公司简介</h1>
 	<div class="gyttrb" style=" min-height: 510px; font-family:SimSun;background: #f8f8f8;padding: 25px 40px;margin-top: 20px;">
-   <p class="text-left lead">&nbsp;&nbsp;&nbsp;&nbsp;中国铁塔是经国务院批准，国资委、工信部协调推动，由中国电信、中国移动、中国联通共同出资设立的大型通信基础设施综合服务企业，主要从事通信铁塔等基站配套设施和室内分布系统的建设、维护和运营。公司于2014年7月18日挂牌成立，2015年10月与三家电信运营企业完成全部存量铁塔相关资产的注入和收购，同时引入新股东中国国新。截至目前，公司铁塔总量约170万座，成为全球最大的通信基础设施服务公司。根据公司“三步走”战略，公司将择机上市，并实现混合所有制发展。
+   <p class="text-left lead" style="text-indent:2em;">中国铁塔是经国务院批准，国资委、工信部协调推动，由中国电信、中国移动、中国联通共同出资设立的大型通信基础设施综合服务企业，主要从事通信铁塔等基站配套设施和室内分布系统的建设、维护和运营。公司于2014年7月18日挂牌成立，2015年10月与三家电信运营企业完成全部存量铁塔相关资产的注入和收购，同时引入新股东中国国新。截至目前，公司铁塔总量约170万座，成为全球最大的通信基础设施服务公司。根据公司“三步走”战略，公司将择机上市，并实现混合所有制发展。
 </p>
    <p class="text-left lead"><strong>公司的企业精神：</strong>求是求实、自强不息</p>
    <p class="text-left lead"><strong>公司的核心价值观：</strong>开拓创新、务实高效、利益客户、成就员工</p>
